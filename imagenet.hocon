@@ -1,0 +1,61 @@
+#  ------------ General options ----------------------------------------
+save_path = "./save_ImageNet/"
+dataPath = "data/"
+dataset = "imagenet" # options: imagenet | cifar100 | cifar10
+nGPU = 1  # number of GPUs to use by default
+GPU = 0  # default gpu to use, options: range(nGPU)
+visible_devices = "0"
+# ------------- Data options -------------------------------------------
+nThreads = 4  # number of data loader threads
+
+# ---------- Optimization options --------------------------------------
+nEpochs = 400  # number of total epochs to train 400
+batchSize = 16  # batchsize
+momentum = 0.9  # momentum 0.9
+weightDecay = 1e-4  # weight decay 1e-4
+opt_type = "SGD"
+warmup_epochs = 50 # number of epochs for warmup
+
+lr_S = 0.000001 # initial learning rate = 0.000001
+lrPolicy_S = "multi_step"  # options: multi_step | linear | exp | const | step
+step_S = [100,200,300]  # step for linear or exp learning rate policy default [200, 300, 400]
+decayRate_S = 0.1 # lr decay rate
+
+# ---------- Model options ---------------------------------------------
+model = "resnet18" 
+# 'resnet18', 'resnet50', 'inceptionv3', 'mobilenetv2_w1', 'shufflenet_g1_w1', 'resnet20_cifar10', 'sqnxt23_w2', 'resnet20', 'resnet56'
+experimentID = "imganet_4bit_"
+nClasses = 1000  # number of classes in the dataset
+
+# ---------- Quantization options ---------------------------------------------
+qw = 4
+qa = 4
+
+# ----------KD options ---------------------------------------------
+temperature = 20
+alpha = 1
+
+# ----------Generator options ---------------------------------------------
+latent_dim = 100
+img_size = 224
+channels = 3
+
+lr_G = 0.001       # default 0.001
+lrPolicy_G = "multi_step"  # options: multi_step | linear | exp | const | step
+step_G = [100,200,300]   # step for linear or exp learning rate policy
+decayRate_G = 0.1 # lr decay rate
+b1 = 0.5
+b2 = 0.999
+
+# ----------My settings --------------------------
+pretrained_mode = "origin" # options: DPL | origin
+soft_stat_batchsize = 1
+soft_stat_epoch = 50
+
+crop_ratio = 0.8
+C_BNSLoss_weight = 0.9
+soft_decay = 0.2
+
+# ----------Settings for control-------------------
+load_quantized = 0
+visual = 0
